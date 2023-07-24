@@ -1,3 +1,4 @@
+# 1st try
 n = int(input())
 l = list(map(int, input().split()))
 
@@ -11,4 +12,6 @@ else:
         if l[i] == 0:
             count += 1
           
-print("YES" if count==1 else "NO")  
+print("YES" if count==1 else "NO")   
+
+#2nd try
