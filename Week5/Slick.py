@@ -2,18 +2,23 @@ import queue
 MAX = 251
 table = [None] * MAX
 slick = [0] * (MAX * MAX)
+q = [None] * (MAX * MAX)
 
 dr = [0, 0, 1, -1]
 dc = [1, -1, 0, 0]
 
-def BFS(i,j):
-    q = queue.Queue()
-    q.put((i,j))
-    table[i][j] = '0'
+def BFS(sr,sc):
+    # q = queue.Queue()
+    # q.put((i,j))
+    left = right = 0
+    q[0] = (sr, sc)
+    table[sr][sc] = '0'
     count = 1
     
-    while not q.empty():
-        ur, uc = q.get()
+    while left <= right:
+        ur, uc = q[left]
+        left += 1
+        # ur, uc = q.get()
         
         for k in range(4):
             r = dr[k] + ur
@@ -21,7 +26,9 @@ def BFS(i,j):
             
             if r in range(N) and c in range(M) and table[r][c] == '1':
                 table[r][c] = '0'
-                q.put((r,c))
+                # q.put((r,c))
+                right += 1
+                q[right] = (r, c)
                 count += 1
                 
     slick[count] += 1
